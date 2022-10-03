@@ -55,39 +55,50 @@ namespace ATMConsoleApp
         //setter for balance
         public void setBalance(double newBalance) { balance = newBalance; }
 
+        //Main Method
         static void Main(string[] args)
         {
             void showOptions()
             {
+                Console.WriteLine("********************************************************");
                 Console.WriteLine("Please choose from one of the following options...");
+                Console.WriteLine("----------------------------------------------------");
                 Console.WriteLine("1. Deposit");
                 Console.WriteLine("2. Withdraw");
                 Console.WriteLine("3. Check Balance");
                 Console.WriteLine("4. Exit");
+                Console.WriteLine("********************************************************");
             }
 
             void deposit(CardHolder currentUser)
             {
+                Console.WriteLine("********************************************************");
                 Console.WriteLine("How much Money would you like to deposit?");
                 double deposit = Double.Parse(Console.ReadLine());
+                Console.WriteLine("------------------------------------------------------");
                 currentUser.setBalance(currentUser.getBalance() + deposit);
                 Console.WriteLine("Thank for Deposit. Your new balance is : " + currentUser.getBalance());
+                Console.WriteLine("------------------------------------------------------");
             }
 
             void withdraw(CardHolder currentUser)
             {
+                Console.WriteLine("********************************************************");
                 Console.WriteLine("How much Money would you like to withdraw?");
                 double withdrawal = Double.Parse(Console.ReadLine());
                 // Check if current user has enough money
                 if (currentUser.getBalance() < withdrawal)
                 {
+                    Console.WriteLine("-----------------------------------------------------");
                     Console.Write("Insufficient balance :(");
+                    Console.WriteLine("-----------------------------------------------------");
                 }
                 else
                 {
-
+                    Console.WriteLine("-----------------------------------------------------");
                     currentUser.setBalance(currentUser.getBalance() - withdrawal);
                     Console.WriteLine("Thank you :) Please Visit again!");
+                    Console.WriteLine("-----------------------------------------------------");
 
                 }
 
@@ -96,8 +107,9 @@ namespace ATMConsoleApp
 
             void balance(CardHolder currentUser)
             {
+                Console.WriteLine("-----------------------------------------------------");
                 Console.WriteLine("Current Balance: " + currentUser.getBalance());
-
+                Console.WriteLine("-----------------------------------------------------");
             }
 
             List<CardHolder> cardHolders = new List<CardHolder>();
@@ -108,12 +120,14 @@ namespace ATMConsoleApp
             cardHolders.Add(new CardHolder("57948718y37478022", 8390, "Jack", "Jackson", 843.99));
 
             // prompt user
-
+            Console.WriteLine("********************************************************");
             Console.WriteLine("Welcome to Console ATM");
+            Console.WriteLine("********************************************************");
+            Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine("Please insert your debit card:");
             string debitCardNum = "";
             CardHolder currentUser;
-
+          
             while (true)
             {
                 try
@@ -127,14 +141,22 @@ namespace ATMConsoleApp
                     {
                         break;
                     }
-                    else { Console.WriteLine("Card not recognized. Please try again"); }
+                    else
+                    {
+                        Console.WriteLine("-----------------------------------------------------");
+                        Console.WriteLine("Card not recognized. Please try again");
+                        Console.WriteLine("-----------------------------------------------------");
+                    }
                 }
                 catch (Exception e)
                 {
+                    Console.WriteLine("-----------------------------------------------------");
                     Console.WriteLine("Card not recognized. Please try again " + e.Message);
+                    Console.WriteLine("-----------------------------------------------------");
 
                 }
             }
+            Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine("Please enter your pin");
             int userPin = 0;
             while (true)
@@ -143,10 +165,20 @@ namespace ATMConsoleApp
                 {
                     userPin = int.Parse(Console.ReadLine());
                     if (currentUser.getPin() == userPin) { break; }
-                    else { Console.WriteLine("Incorrect Pin!"); }
+                    else 
+                    {
+                        Console.WriteLine("-----------------------------------------------------");
+                        Console.WriteLine("Incorrect Pin!");
+                        Console.WriteLine("-----------------------------------------------------");
+                    }
 
                 }
-                catch { Console.WriteLine("Incorrect Pin! try again.."); }
+                catch 
+                {
+                    Console.WriteLine("-----------------------------------------------------");
+                    Console.WriteLine("Incorrect Pin! try again..");
+                    Console.WriteLine("-----------------------------------------------------");
+                }
             }
 
             Console.WriteLine("Welcome " + currentUser.getFirstName() + " :)");
@@ -166,7 +198,9 @@ namespace ATMConsoleApp
                 else { option = 0; }
             }
             while (option != 4);
+            Console.WriteLine("********************************************************");
             Console.WriteLine("Thank you! Have a nice day :)");
+            Console.WriteLine("********************************************************");
         }
 
     }
